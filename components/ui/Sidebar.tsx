@@ -1,40 +1,39 @@
-"use client";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { sidebarLinks } from "@/app/constants/index";
-import Image from "next/image";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { sidebarLinks } from '@/app/constants/index';
+import { cn } from '@/lib/utils';
 
 const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="sticky left-0 top-0 h-screen w-fit justify-between bg-dark text-white max-sm:hidden lg:w-[264px]">
+    <section className="sticky left-0 top-0 flex h-screen w-fit flex-col  justify-between  bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]">
       <div className="flex flex-1 flex-col gap-6">
-        {sidebarLinks.map((link) => {
-          const isActive =
-            pathname === link.route || pathname.startsWith(link.route);
-
+        {sidebarLinks.map((item) => {
+          const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
+          
           return (
             <Link
-              href={link.route}
-              key={link.title}
+              href={item.route}
+              key={item.title}
               className={cn(
-                "flex gap-4 items-center p-4 rounded-lg justify-start",
+                'flex gap-4 items-center p-4 rounded-lg justify-start',
                 {
-                  "bg-primary": isActive,
-                  "text-accent": isActive,
+                  'bg-blue-1': isActive,
                 }
               )}
             >
               <Image
-                src={link.imgUrl}
-                alt={link.title}
+                src={item.imgUrl}
+                alt={item.title}
                 width={24}
                 height={24}
               />
               <p className="text-lg font-semibold max-lg:hidden">
-                {link.title}
+                {item.title}
               </p>
             </Link>
           );
