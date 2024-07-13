@@ -1,15 +1,12 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { sidebarLinks } from "@/app/constants/index";
-import { cn } from "@/lib/utils";
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { sidebarLinks } from '@/constants';
+import { cn } from '@/lib/utils';
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -46,21 +43,21 @@ const MobileNav = () => {
                     <SheetClose asChild key={item.route}>
                       <Link
                         href={item.route}
-                        key={item.title}
+                        key={item.label}
                         className={cn(
-                          "flex gap-4 items-center p-4 rounded-lg w-full max-w-60",
+                          'flex gap-4 items-center p-4 rounded-lg w-full max-w-60',
                           {
-                            "bg-blue-1": isActive,
+                            'bg-blue-1': isActive,
                           }
                         )}
                       >
                         <Image
-                          src={item.imgUrl}
-                          alt={item.title}
+                          src={item.imgURL}
+                          alt={item.label}
                           width={20}
                           height={20}
                         />
-                        <p className="font-semibold">{item.title}</p>
+                        <p className="font-semibold">{item.label}</p>
                       </Link>
                     </SheetClose>
                   );
