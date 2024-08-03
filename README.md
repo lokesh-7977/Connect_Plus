@@ -1,4 +1,4 @@
-<h3 align="center">Yoom: A Zoom Clone</h3>
+<h3 align="center">Connect Plus</h3>
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
